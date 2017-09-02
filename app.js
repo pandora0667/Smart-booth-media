@@ -1,8 +1,12 @@
 const net = require('net');
+const express = require('express'); 
 const mplayer = require('mplayer');
+const app = express(); 
 let player = new mplayer();
- const path = '/home/jusk2/videos/';
- const fileName = '1.mp4';
+
+app.listen(3000, function() {
+  console.log('kiosk media listeing 3000 port!!'); 
+});  
 
 function getConnection(connName) {
     let client = net.connect({port: 5001, host: '203.230.100.177'}, function () {
@@ -11,15 +15,21 @@ function getConnection(connName) {
         console.log('   remote = %s:%s', this.remoteAddress, this.remotePort);
         this.setEncoding('utf8');
         register(client);
+		
 
         this.on('data', function (data) {
             let re = /\0/g;
             let str = data.toString().replace(re, "");
             let msg = JSON.parse(str);
+			console.log(msg);
 
-            if (msg.value >= 100) {
-                 player.openFile(path + fileName);
-            }
+			if (msg.value !== undefined) {
+				player.openFile('/home/jusk2/Videos/1.mp4');
+				player.status = {
+					volume: 100, 
+					fullscreen: true
+				}; 
+			}
 
         });
         this.on('end', function () {
