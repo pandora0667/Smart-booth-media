@@ -6,7 +6,7 @@ const fileName = '1.mp4';
 
 function getConnection(connName) {
     let client = net.connect({port: 5001, host: '203.230.100.177'}, function () {
-        onsole.log(connName + ' Connected: ');
+        console.log(connName + ' Connected: ');
         console.log('   local = %s:%s', this.localAddress, this.localPort);
         console.log('   remote = %s:%s', this.remoteAddress, this.remotePort);
         this.setEncoding('utf-8');
