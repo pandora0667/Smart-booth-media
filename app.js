@@ -1,8 +1,8 @@
 const net = require('net');
 const mplayer = require('mplayer');
-let player = mplayer();
-// const path = '/home/jusk2/videos/';
-// const fileName = '1.mp4';
+let player = new mplayer();
+ const path = '/home/jusk2/videos/';
+ const fileName = '1.mp4';
 
 function getConnection(connName) {
     let client = net.connect({port: 5001, host: '203.230.100.177'}, function () {
@@ -18,7 +18,7 @@ function getConnection(connName) {
             let msg = JSON.parse(str);
 
             if (msg.value >= 100) {
-                // player.openFile(path + fileName);
+                 player.openFile(path + fileName);
             }
 
         });
