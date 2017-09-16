@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.4",
-    "mplayer": "^2.1.0"
+    "mplayer": "^2.1.0",
+    "socket.io-client": "^2.0.3"
   }
 }
